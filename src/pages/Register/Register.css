@@ -1,0 +1,24 @@
+.loginregister {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.loginregister__input {
+  width: 50%;
+  height: 50px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 3px;
+}
+.loginregister__button {
+  background-color: rgb(248, 188, 47);
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  width: 50%;
+  border-radius: 30px;
+  height: 48px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 5px;
+}
