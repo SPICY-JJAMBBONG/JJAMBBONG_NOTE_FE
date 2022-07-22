@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Register.css";
+import "../../Design.css";
 import { BASE_URL, METHOD, restApiSvcCall } from "src/lib/common/restApi";
 
 const Register = () => {
@@ -58,8 +58,7 @@ const Register = () => {
   };
 
   return (
-    <>
-      <form>
+      <form className="w-5/6 h-4/6 m-20 flex flex-col justify-center items-center">
         <div>
           <input
             name="email"
@@ -67,8 +66,8 @@ const Register = () => {
             placeholder="이메일"
             value={email}
             onChange={onEmailHandler}
-            className="loginregister__input"
-            style={{ marginTop: "25%" }}
+            id="loginregister__input"
+            className="m-4 input input-bordered"
           />
         </div>
         <div>
@@ -78,7 +77,8 @@ const Register = () => {
             placeholder="비밀번호"
             value={password}
             onChange={onPasswordHandler}
-            className="loginregister__input"
+            id="loginregister__input"
+            className="my-2 input input-bordered"
           />
         </div>
         <div>
@@ -88,7 +88,8 @@ const Register = () => {
             placeholder="비밀번호 확인"
             value={password2}
             onChange={onPassword2Handler}
-            className="loginregister__input"
+            id="loginregister__input"
+            className="my-2 input input-bordered"
           />
         </div>
         <div>
@@ -98,7 +99,8 @@ const Register = () => {
             placeholder="이름"
             value={name}
             onChange={onNameHandler}
-            className="loginregister__input"
+            id="loginregister__input"
+            className="my-2 input input-bordered"
           />
         </div>
         <div>
@@ -106,13 +108,13 @@ const Register = () => {
             type="button"
             // onSubmit={onSubmit}
             onClick={onClickRegister}
-            className="loginregister__button"
+            id="loginregister__button"
+            className="my-2 btn btn-primary"
           >
             회원가입
           </button>
         </div>
       </form>
-    </>
   );
 };
 
