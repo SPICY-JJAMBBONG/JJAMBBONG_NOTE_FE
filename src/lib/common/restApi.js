@@ -23,10 +23,8 @@ export function restApiSvcCall(props) {
       .then(function (response) {
         const result = {
           svcId: props.svcId,
-          data: response.data,
-          status: response.data.rtn_code,
-          message: response.data.result,
-          errorCode: response.data.error_msg,
+          data: response.data.result,
+          errorMsg: response.data.error_msg,
         };
         if (props.callback) {
           props.callback(result);
@@ -37,7 +35,7 @@ export function restApiSvcCall(props) {
           const result = {
             svcId: props.svcId,
             data: err.data,
-            status: err.data.rtn_code,
+            status: err.data.error_msg,
             errorCode: 0,
           };
           props.callback(result);
@@ -45,8 +43,7 @@ export function restApiSvcCall(props) {
           const result = {
             svcId: props.svcId,
             data: err.data,
-            status: err.data.rtn_code,
-            message: err.message,
+            status: err.data.error_msg,
             errorCode: 0,
           };
           props.callback(result);
@@ -58,10 +55,8 @@ export function restApiSvcCall(props) {
       .then(function (response) {
         const result = {
           svcId: props.svcId,
-          data: response.data,
-          status: response.data.rtn_code,
-          message: response.data.result,
-          errorCode: response.data.error_msg,
+          data: response.data.result,
+          errorMsg: response.data.error_msg,
         };
         if (props.callback) {
           props.callback(result);
@@ -72,7 +67,7 @@ export function restApiSvcCall(props) {
           const result = {
             svcId: props.svcId,
             data: err.data,
-            status: err.data.rtn_code,
+            status: err.data.error_msg,
             errorCode: 0,
           };
           props.callback(result);
@@ -80,8 +75,7 @@ export function restApiSvcCall(props) {
           const result = {
             svcId: props.svcId,
             data: err.data,
-            status: err.data.rtn_code,
-            message: err.message,
+            status: err.data.error_msg,
             errorCode: 0,
           };
           props.callback(result);
@@ -93,10 +87,8 @@ export function restApiSvcCall(props) {
       .then(function (response) {
         const result = {
           svcId: props.svcId,
-          data: response.data,
-          status: response.data.rtn_code,
-          message: response.data.result,
-          errorCode: response.data.error_msg,
+          data: response.data.result,
+          errorMsg: response.data.error_msg,
         };
         if (props.callback) {
           props.callback(result);
@@ -107,7 +99,7 @@ export function restApiSvcCall(props) {
           const result = {
             svcId: props.svcId,
             data: err.data,
-            status: err.data.rtn_code,
+            status: err.data.error_msg,
             errorCode: 0,
           };
           props.callback(result);
@@ -115,8 +107,7 @@ export function restApiSvcCall(props) {
           const result = {
             svcId: props.svcId,
             data: err.data,
-            status: err.data.rtn_code,
-            message: err.message,
+            status: err.data.error_msg,
             errorCode: 0,
           };
           props.callback(result);
@@ -128,10 +119,8 @@ export function restApiSvcCall(props) {
       .then(function (response) {
         const result = {
           svcId: props.svcId,
-          data: response.data,
-          status: response.data.rtn_code,
-          message: response.data.result,
-          errorCode: response.data.error_msg,
+          data: response.data.result,
+          errorMsg: response.data.error_msg,
         };
         if (props.callback) {
           props.callback(result);
@@ -142,7 +131,7 @@ export function restApiSvcCall(props) {
           const result = {
             svcId: props.svcId,
             data: err.data,
-            status: err.data.rtn_code,
+            status: err.data.error_msg,
             errorCode: 0,
           };
           props.callback(result);
@@ -150,8 +139,7 @@ export function restApiSvcCall(props) {
           const result = {
             svcId: props.svcId,
             data: err.data,
-            status: err.data.rtn_code,
-            message: err.message,
+            status: err.data.error_msg,
             errorCode: 0,
           };
           props.callback(result);

@@ -31,8 +31,7 @@ const Register = () => {
     } else
       onSubmit({
         email: email,
-        password1: password,
-        password2: password2,
+        password: password,
         name: name,
       });
   };
