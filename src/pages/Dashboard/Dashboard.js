@@ -4,45 +4,68 @@ import * as SockJS from "sockjs-client";
 import Stomp from "stompjs";
 
 const Dashboard = () => {
-  const [text, setText] = useState([]);
+  const [text, setText] = useState("");
+  const [message, setMessage] = useState("");
+  const [stompClient, setStompClient] = useState(null);
 
-  let stompClient = null;
-  let socket = new SockJS("http://localhost:8080/gs-guide-websocket");
-  stompClient = Stomp.over(socket);
-  stompClient.debug = () => {};
+  // stompClient.connect({}, function (frame) {
+  //   console.log("Connected: " + frame);
+  //   stompClient.subscribe("/topic/receive/test", function (greeting) {
+  //     console.log(greeting);
+  //     //you can execute any function here
+  //   });
+  // });
 
   const onChangeText = useCallback((e) => {
-    setText((prev) => [...prev, e.target.value]);
-    stompClient.send("/topic/send/test", {}, text);
+    // setText((prev) => [...prev, e.target.value]);
+    setText(e.target.value);
   }, []);
 
   useEffect(() => {
-    stompClient.connect({}, () => {
-      stompClient.subscribe("/topic/receive/test", (data) => {
-        const newMessage = JSON.parse(data.body);
-        addMessage(newMessage);
-      });
-    });
+    if (text === "") return;
+    stompClient.send("/topic/send/test", {}, text);
+    // stompClient.connect({}, () => {
+    //   stompClient.subscribe("/topic/receive/test", (data) => {
+    //     const newMessage = JSON.parse(data.body);
+    //     addMessage(newMessage);
+    //   });
+    // });
   }, [text]);
 
   const addMessage = (message) => {
-    setText((prev) => [...prev, message]);
+    // setText((prev) => [...prev, message]);
+    setText(message);
   };
 
-  // useEffect(() => {
-  //   stompClient.connect({}, function (frame) {
-  //     // /topic/receive/test에 구독 하고 있는 페이지들에 데이터 전송
-  //     stompClient.subscribe("/topic/receive/test", function (document) {
-  //       let data = JSON.parse(document.body).content;
-  //       let content = JSON.parse(data).content;
-  //       setText(content);
-  //     });
-  //   });
-  // }, []);
-
   useEffect(() => {
-    stompClient.send("/topic/send/test", {}, text);
-  }, [text]);
+    let socket = SockJS("http://localhost:8080/gs-guide-websocket");
+    const stompClient = Stomp.over(socket);
+    socket.onopen = function () {
+      console.log("open");
+    };
+    stompClient.connect({}, () => {
+      stompClient.subscribe(
+        "/topic/receive/test",
+        (data) => {
+          console.log(data);
+          console.log("####");
+          setMessage(JSON.parse(data.body).content);
+        },
+        onError
+      );
+    });
+    setStompClient(stompClient);
+  }, []);
+
+  // useEffect(() => {
+  //   stompClient.send("/topic/send/test", {}, text);
+  // }, [text]);
+
+  const onError = (error) => {
+    console.log(
+      "Could not connect you to the Chat Room Server. Please refresh this page and try again!"
+    );
+  };
 
   return (
     <>
@@ -54,6 +77,14 @@ const Dashboard = () => {
           name="test"
           value={text}
           onChange={onChangeText}
+          style={{ height: "200px", width: "70%" }}
+        ></textarea>
+        <h1>Websocket Test</h1>
+        <textarea
+          id="test"
+          name="test"
+          value={message}
+          style={{ height: "200px", width: "70%" }}
         ></textarea>
       </div>
     </>

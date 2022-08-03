@@ -37,7 +37,7 @@ const Sidebar = () => {
     { name: "샘플2", path: "/mylist" },
   ];
   return (
-    <Side>
+    <Side style={{ float: "left" }}>
       <Menu>
         {menus.map((menu, index) => {
           return (
