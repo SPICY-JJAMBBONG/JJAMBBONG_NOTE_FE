@@ -43,6 +43,21 @@ const Dashboard = () => {
     );
   };
 
+  // useEffect(() => {
+  //   stompClient.connect({}, function (frame) {
+  //     // /topic/receive/test에 구독 하고 있는 페이지들에 데이터 전송
+  //     stompClient.subscribe("/topic/receive/test", function (document) {
+  //       let data = JSON.parse(document.body).content;
+  //       let content = JSON.parse(data).content;
+  //       setText(content);
+  //     });
+  //   });
+  // }, []);
+
+  useEffect(() => {
+    stompClient.send("/topic/send/test", {}, text);
+  }, [text]);
+
   return (
     <>
       <Sidebar />
