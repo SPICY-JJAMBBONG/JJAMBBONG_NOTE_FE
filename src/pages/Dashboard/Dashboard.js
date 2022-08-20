@@ -3,39 +3,21 @@ import Sidebar from "src/component/common/Sidebar/Sidebar";
 import * as SockJS from "sockjs-client";
 import Stomp from "stompjs";
 
+const sampleData = [];
+
 const Dashboard = () => {
   const [text, setText] = useState("");
   const [message, setMessage] = useState("");
   const [stompClient, setStompClient] = useState(null);
 
-  // stompClient.connect({}, function (frame) {
-  //   console.log("Connected: " + frame);
-  //   stompClient.subscribe("/topic/receive/test", function (greeting) {
-  //     console.log(greeting);
-  //     //you can execute any function here
-  //   });
-  // });
-
   const onChangeText = useCallback((e) => {
-    // setText((prev) => [...prev, e.target.value]);
     setText(e.target.value);
   }, []);
 
   useEffect(() => {
     if (text === "") return;
     stompClient.send("/topic/send/test", {}, text);
-    // stompClient.connect({}, () => {
-    //   stompClient.subscribe("/topic/receive/test", (data) => {
-    //     const newMessage = JSON.parse(data.body);
-    //     addMessage(newMessage);
-    //   });
-    // });
   }, [text]);
-
-  const addMessage = (message) => {
-    // setText((prev) => [...prev, message]);
-    setText(message);
-  };
 
   useEffect(() => {
     let socket = SockJS("http://localhost:8080/gs-guide-websocket");
@@ -47,8 +29,6 @@ const Dashboard = () => {
       stompClient.subscribe(
         "/topic/receive/test",
         (data) => {
-          console.log(data);
-          console.log("####");
           setMessage(JSON.parse(data.body).content);
         },
         onError
@@ -56,10 +36,6 @@ const Dashboard = () => {
     });
     setStompClient(stompClient);
   }, []);
-
-  // useEffect(() => {
-  //   stompClient.send("/topic/send/test", {}, text);
-  // }, [text]);
 
   const onError = (error) => {
     console.log(
