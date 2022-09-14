@@ -7,16 +7,14 @@ import TextPage from "./pages/TextPage/TextPage.js";
 
 const App = () => {
   return (
-    <div>
-      <BrowserRouter>
-        <Switch>
-          <Route path="/textpage" component={TextPage} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/register" component={Register} />
-          <Route component={NotFound} />
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/textpage" component={TextPage} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/register" component={Register} />
+        <Route component={NotFound} />
+      </Switch>
+    </BrowserRouter>
   );
 };
 
