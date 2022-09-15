@@ -14,17 +14,21 @@ import TextBox from "./TextBox";
 //   },
 // ];
 
-// const testdata = ["하이하이", "데이터", "왜안들어가"];
+const testdata = [
+  { test: "하이하이" },
+  { test: "데이터" },
+  { test: "입력하는건 좀 나중에 만들게요....." },
+];
 
 function TextArea() {
   return (
-    <div className="w-4/6 bg-gray-50 border-2 border-red p-6">
+    <div className="w-4/6 bg-gray-50 border-2 border-red p-6 divide-y-2">
       <PageTitle></PageTitle>
-      {/* <>
-        {testdata.map((data, index) => (
-          <TextBox key={index} data={data}></TextBox>
+      <div className="py-3 space-y-1">
+        {testdata.map((testtest, index) => (
+          <TextBox testtest={testtest.test} key={index} />
         ))}
-      </> */}
+      </div>
     </div>
   );
 }

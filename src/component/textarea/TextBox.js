@@ -1,11 +1,9 @@
 import React from "react";
 
 function TextBox(props) {
-  const data = props.data;
-  console.log(data);
   return (
-    <div>
-      <span>{data}</span>
+    <div className="rounded-lg hover:bg-gray-100 p-1 px-2">
+      <span>{props.testtest}</span>
     </div>
   );
 }

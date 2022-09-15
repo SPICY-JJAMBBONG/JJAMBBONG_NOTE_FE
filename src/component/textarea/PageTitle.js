@@ -2,7 +2,7 @@ import React from "react";
 
 function PageTitle() {
   return (
-    <div className="text-left text-3xl space-x-2">
+    <div className="py-3 text-left text-3xl space-x-2">
       <span role={"img"} aria-label="emoji">
         😇
       </span>
